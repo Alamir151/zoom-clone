@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
 
-app.get('/:room', (req, res) => {
-  res.render('room.ejs', { roomId: req.params.room });
+app.get('/:roomID', (req, res) => {
+  res.render('room', { roomId: req.params.roomID });
 });
 
 io.on('connection', socket => {
