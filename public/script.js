@@ -5,9 +5,9 @@ const myVideo = document.createElement('video');
 myVideo.muted = true;
 
 const peer = new Peer(undefined, {
-  host: 'zoom-clone-mero.vercel.app',
+  host: 'zoomero.onrender.com',
   secure: true,
-  port: process.env.PORT||443,
+  port: 3000,
 });
 
 const socket = io('/');
