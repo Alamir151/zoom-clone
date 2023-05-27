@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 const server = require('http').Server(app);
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://zoomero.onrender.com",
+    origin: "zoomero.onrender.com",
     methods: ["GET", "POST"],
     allowedHeaders: ["my-custom-header"],
     credentials: true
