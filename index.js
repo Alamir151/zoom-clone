@@ -3,16 +3,11 @@ const app = express();
 app.enable('trust proxy');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const server = require('http').Server(app);
+const server = require('https').Server(app);
 const cors = require('cors');
 app.use(cors());
 const io = require("socket.io")(server, {
-  cors: {
-    origin: "zoomero.onrender.com",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true
-  }
+  
 });
 const { ExpressPeerServer } = require('peer');
 
