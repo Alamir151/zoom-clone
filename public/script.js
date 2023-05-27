@@ -7,12 +7,12 @@ myVideo.muted = true;
 const peer = new Peer(undefined, {
   host: 'zoomero.onrender.com',
   secure: true,
-  path:'/peerjs',
+  path: '/peerjs',
 
-  port: 3000,
+  port: '443',
 });
 
-const socket = io("https://zoomero.onrender.com/");
+const socket = io();
 
 let myVideoStream;
 
