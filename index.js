@@ -5,9 +5,7 @@ const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const server = require('http').Server(app);
 const cors = require('cors');
-app.use(cors({
-  "origin": "*"
-}));
+
 const io = require("socket.io")(server
 
 );
@@ -22,6 +20,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/peerjs', peerServer);
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.redirect(`/${uuidv4()}`);
