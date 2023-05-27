@@ -7,7 +7,7 @@ myVideo.muted = true;
 const peer = new Peer(undefined, {
   host: 'zoomero.onrender.com',
   secure: true,
-  port: 3000,
+  port: 433,
 });
 
 const socket = io('/');
