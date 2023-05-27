@@ -144,5 +144,27 @@ function setPlayVideo() {
     `
   document.querySelector('.main__video_button').innerHTML = html;
 }
+function showOrHideChat() {
+  const chats = document.querySelector(".main_right");
+  const chatVideos = document.querySelector(".main_left");
+  const chatButton = document.querySelector(".main__chat_button");
+  const showhtml = `<i class="close fas fa-comment-slash"></i>
+  <span>Show chats</span>`;
+  const closehtml = `<i class="fa-solid fa-comment"></i>
+<span>Hide chats</span>`;
+
+
+  if (!chats.classList.contains('close')) {
+    chats.classList.add("close");
+    chatVideos.style.flex = "1";
+    chatButton.innerHTML = showhtml;
+
+  } else {
+    chats.classList.remove("close");
+    chatVideos.style.flex = "0.8";
+    chatButton.innerHTML = closehtml;
+
+  }
+}
 
 
