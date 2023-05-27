@@ -11,12 +11,8 @@ const peer = new Peer(undefined, {
   port: 3000,
 });
 
-const socket = io("/", {
-  withCredentials: true,
-  extraHeaders: {
-    "my-custom-header": "abcd"
-  }
-});
+const socket = io("https://zoomero.onrender.com/");
+
 let myVideoStream;
 
 navigator.mediaDevices.getUserMedia({
