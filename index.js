@@ -3,7 +3,14 @@ const app = express();
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const server = require('http').Server(app);
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "https://zoomero.onrender.com",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  }
+});
 const { ExpressPeerServer } = require('peer');
 
 const peerServer = ExpressPeerServer(server, {
@@ -32,7 +39,7 @@ io.on('connection', socket => {
     socket.on('message', (message) => {
       //send message to the same room
       io.to(roomId).emit('createMessage', message)
-  }); 
+    });
 
     socket.on('disconnect', () => {
       socket.to(roomId).emit('user-disconnected', userId)
@@ -40,7 +47,7 @@ io.on('connection', socket => {
   })
 })
 
-const PORT = process.env.PORT|| 3000;
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
