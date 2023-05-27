@@ -10,7 +10,7 @@ const peer = new Peer(undefined, {
   port: 433,
 });
 
-const socket = io('zoomero.onrender.com/');
+const socket = io('ws://zoomero.onrender.com/');
 let myVideoStream;
 
 navigator.mediaDevices.getUserMedia({
