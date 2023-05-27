@@ -7,7 +7,7 @@ myVideo.muted = true;
 const peer = new Peer(undefined, {
   host: 'zoom-clone-mero.vercel.app',
   secure: true,
-  port: 433,
+  port: process.env.PORT||443,
 });
 
 const socket = io('/');
