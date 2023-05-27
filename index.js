@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/peerjs', peerServer);
 
 app.get('/', (req, res) => {
-  res.redirect(`${uuidv4()}`);
+  res.redirect(`/${uuidv4()}`);
 });
 
 app.get('/:room', (req, res) => {
