@@ -41,10 +41,15 @@ navigator.mediaDevices.getUserMedia({
 
 
 });
+
+socket.on('user-disconnected', userId => {
+  console.log('user disconnected');
+  if (peers[userId]) peers[userId].close()
+})
+
 peer.on('open', id => {
-  console.log('Peer ID: ' + id);
-  socket.emit('join-room', ROOM_ID, id);
-});
+  socket.emit('join-room', ROOM_ID, id)
+})
 
 
 

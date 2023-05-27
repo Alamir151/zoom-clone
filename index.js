@@ -9,11 +9,13 @@ const cors = require('cors');
 const io = require("socket.io")(server
 
 );
+
 const { ExpressPeerServer } = require('peer');
 
 const peerServer = ExpressPeerServer(server, {
   debug: true,
 });
+const roomToSockets = {};
 
 // Middlewares
 app.set('view engine', 'ejs');
@@ -26,29 +28,40 @@ app.get('/', (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
 
+
+
 app.get('/:roomID', (req, res) => {
   res.render('room', { roomId: req.params.roomID });
 });
 
 io.on('connection', socket => {
-  console.log('connection');
   socket.on('join-room', (roomId, userId) => {
     socket.join(roomId)
     socket.to(roomId).emit('user-connected', userId);
+    // Add the socket to the room's connections
+    if (!roomToSockets[roomId]) {
+      roomToSockets[roomId] = [socket];
+    } else {
+      roomToSockets[roomId].push(socket);
+    }
     // messages
     socket.on('message', (message) => {
       //send message to the same room
-      console.log(`message comming from server ${message}`);
       io.to(roomId).emit('createMessage', message)
     });
+
     socket.on('disconnect', () => {
-      socket.to(roomId).emit('user-disconnected', userId)
-    });
-
-
-  });
-
+      socket.to(roomId).emit('user-disconnected', userId);
+      // Remove the socket from the room's connections
+      if (roomToSockets[roomId]) {
+        roomToSockets[roomId] = roomToSockets[roomId].filter(s => s !== socket);
+      }
+    })
+  })
 })
+
+
+
 
 
 
