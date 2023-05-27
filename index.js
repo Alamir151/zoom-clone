@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.enable('trust proxy');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const server = require('http').Server(app);
