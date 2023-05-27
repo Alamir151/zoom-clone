@@ -4,7 +4,11 @@ const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 
-const peer = new Peer()
+const peer = new Peer(undefined, {
+  host: 'zoom-clone-mero.vercel.app',
+  secure: true,
+  port: process.env.PORT || 433,
+});
 
 const socket = io('/');
 let myVideoStream;
@@ -107,7 +111,7 @@ const playStop = () => {
   }
 }
 
-function setMuteButton ()  {
+function setMuteButton() {
   const html = `
       <i class="fas fa-microphone"></i>
       <span>Mute</span>
@@ -115,14 +119,14 @@ function setMuteButton ()  {
   document.querySelector('.main__mute_button').innerHTML = html;
 }
 
-function setUnmuteButton () {
+function setUnmuteButton() {
   const html = `
       <i class="unmute fas fa-microphone-slash"></i>
       <span>Unmute</span>
     `
   document.querySelector('.main__mute_button').innerHTML = html;
 }
-function setStopVideo  () {
+function setStopVideo() {
   const html = `
       <i class="fas fa-video"></i>
       <span>Stop Video</span>
@@ -130,7 +134,7 @@ function setStopVideo  () {
   document.querySelector('.main__video_button').innerHTML = html;
 }
 
-function setPlayVideo  () {
+function setPlayVideo() {
   const html = `
     <i class="stop fas fa-video-slash"></i>
       <span>Play Video</span>
