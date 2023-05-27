@@ -3,11 +3,13 @@ const app = express();
 app.enable('trust proxy');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const server = require('https').Server(app);
+const server = require('http').Server(app);
 const cors = require('cors');
-app.use(cors());
+app.use(cors({
+  "origin": "*"
+}));
 const io = require("socket.io")(server, {
-  
+
 });
 const { ExpressPeerServer } = require('peer');
 
