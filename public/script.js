@@ -87,6 +87,9 @@ socket.on('createMessage', (message) => {
   $('.messages').append(`<li class="message"><b>User </>${message}</li>`);
   scrollToBottom();
 })
+socket.on('user-disconnect', () => {
+
+})
 const scrollToBottom = () => {
   var d = $('.main__chat_window');
   d.scrollTop(d.prop("scrollHeight"));
@@ -157,11 +160,13 @@ function showOrHideChat() {
   if (!chats.classList.contains('close')) {
     chats.classList.add("close");
     chatVideos.style.flex = "1";
+    chats.style.flex = "0";
     chatButton.innerHTML = showhtml;
 
   } else {
     chats.classList.remove("close");
     chatVideos.style.flex = "0.8";
+    chats.style.flex = "0.2";
     chatButton.innerHTML = closehtml;
 
   }
