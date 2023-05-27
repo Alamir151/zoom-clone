@@ -5,9 +5,10 @@ const myVideo = document.createElement('video');
 myVideo.muted = true;
 
 const peer = new Peer(undefined, {
-  host: 'https://zoomero.onrender.com',
+  host: 'zoomero.onrender.com',
+  secure: true,
 
-  port: 433,
+  port: 3000,
 });
 
 const socket = io('https://zoomero.onrender.com/');
