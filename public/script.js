@@ -4,11 +4,7 @@ const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 
-const peer = new Peer(undefined,{
-    "path":"/peerjs",
-    "host":"/",
-    "port":"443"
-});
+const peer = new Peer({host:'zoom-clone-five.vercel.app', secure:true, port:443})
 
 const socket = io('/');
 let myVideoStream;
