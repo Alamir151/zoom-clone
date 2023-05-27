@@ -3,7 +3,7 @@
 const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
-
+const peers={}
 const peer = new Peer(undefined, {
   host: 'zoomero.onrender.com',
   secure: true,
@@ -58,6 +58,10 @@ const connectToNewUser = (userId, stream) => {
     console.log('Adding new user');
     addVideoStream(video, userVideoStream);
   });
+  call.on('close', () => {
+    video.remove()
+  });
+  peers[userId] = call;
 
 
 
@@ -87,8 +91,8 @@ socket.on('createMessage', (message) => {
   $('.messages').append(`<li class="message"><b>User </>${message}</li>`);
   scrollToBottom();
 })
-socket.on('user-disconnect', () => {
-
+socket.on('user-disconnected', userId => {
+  if (peers[userId]) peers[userId].close()
 })
 const scrollToBottom = () => {
   var d = $('.main__chat_window');

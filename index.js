@@ -41,12 +41,16 @@ io.on('connection', socket => {
       console.log(`message comming from server ${message}`);
       io.to(roomId).emit('createMessage', message)
     });
-
     socket.on('disconnect', () => {
       socket.to(roomId).emit('user-disconnected', userId)
-    })
-  })
+    });
+
+
+  });
+
 })
+
+
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
