@@ -11,7 +11,7 @@ const peer = new Peer(undefined, {
   port: '443',
 });
 
-const socket = io("https://zoomero.onrender.com", {
+const socket = io("zoomero.onrender.com", {
   withCredentials: true,
   extraHeaders: {
     "my-custom-header": "abcd"
