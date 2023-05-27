@@ -5,13 +5,18 @@ const myVideo = document.createElement('video');
 myVideo.muted = true;
 
 const peer = new Peer(undefined, {
-  host: 'zoomero.onrender.com',
+  host: 'https://zoomero.onrender.com',
   secure: true,
 
   port: 3000,
 });
 
-const socket = io('https://zoomero.onrender.com/');
+const socket = io("https://zoomero.onrender.com", {
+  withCredentials: true,
+  extraHeaders: {
+    "my-custom-header": "abcd"
+  }
+});
 let myVideoStream;
 
 navigator.mediaDevices.getUserMedia({
