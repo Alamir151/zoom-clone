@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "zoom clone using nodejs and express and socket.io",
   "main": "server.js",
+  "engines": {
+    "node": "19.x"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "Alamir Hussein",
   "license": "ISC",

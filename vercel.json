@@ -1,0 +1,19 @@
+{
+    "version":2,
+    "builds":[
+        {
+            "src":"./server.js",
+            "use":"@vercil/node"
+
+        }
+
+    ],
+    "routes":[
+        {
+            "src":"/(.*)",
+            "dest":"/"
+
+        }
+
+    ]
+}
