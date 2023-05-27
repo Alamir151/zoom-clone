@@ -41,6 +41,7 @@ io.on('connection', socket => {
     // messages
     socket.on('message', (message) => {
       //send message to the same room
+      console.log(`message comming from server ${message}`);
       io.to(roomId).emit('createMessage', message)
     });
 
