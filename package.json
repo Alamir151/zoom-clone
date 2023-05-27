@@ -2,12 +2,12 @@
   "name": "zoom-clone",
   "version": "1.0.0",
   "description": "zoom clone using nodejs and express and socket.io",
-  "main": "server.js",
+  "main": "index.js",
   "engines": {
     "node": "19.x"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "author": "Alamir Hussein",
   "license": "ISC",
