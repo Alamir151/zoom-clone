@@ -8,7 +8,7 @@ const peer = new Peer(undefined, {
   host: 'https://zoomero.onrender.com',
   secure: true,
 
-  port: 3000,
+  port: 443,
 });
 
 const socket = io("https://zoomero.onrender.com", {
